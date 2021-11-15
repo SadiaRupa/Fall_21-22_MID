@@ -1,25 +1,22 @@
-<?php
-include('../control/datacheck.php');
+<?php include ('../control/datacheck1.php');
 
-if(isset($_SESSION['username'])){
-header("location: page2.php");
-}
+session_start(); 
+
+header("Location:page2.php"); 
+
+
 ?>
 <!DOCTYPE html>
 <html>
-<body>
-<h2 align = "center">Personal details</h2>
 
-<form align = "center" action="" method="post">
-    <input type="text" name="username" placeholder="Enter your username" ><br>
-    <input type="password" name="password" placeholder="Enter your password" ><br>
-    <input type="text" name="full_name" placeholder="Enter your full name" ><br>
-    <input type="password" name="mobile_no" placeholder="Enter your mobile no." ><br>
-	<input type="date" name="dob" placeholder="Enter your dob" ><br>
-    <input name="submit" type="submit" value="NEXT">
-</form>
-<br>
-<?php echo $error; ?>
+ <h1>Personal Details</h1>
+ <form action="" method="post">
+      Username: <input type="text" name="username"> <br>  <?php echo  $username; ?> <br>
+       Password: <input type="password" name="password"> <br> <?php  echo $password;?> <br>
+       Full name: <input type="text" name ="full_name"> <br>   <?php echo $full_name;?> <br>
+       Mobile no: <input type="number" name="mobile_no"><br> <?php  echo $mobile_no; ?> <br>
+       Date of birth : <input type="date" name="dob"><br>  <?php  echo $dob; ?><br>
+       <input type="submit" name= "submit"value ="Next">
+ </form>
 
-</body>
 </html>

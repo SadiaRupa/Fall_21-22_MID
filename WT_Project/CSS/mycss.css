@@ -1,0 +1,18 @@
+p{
+    text-align: center;
+    color: red;
+}
+#para2
+{
+    color: green;
+    background-color: white;
+    text-shadow: 2px 2px #f00;
+}
+p.center
+{
+    text-align: center;
+    color: yellow;
+}
+body{
+    background-color: skyblue;
+}

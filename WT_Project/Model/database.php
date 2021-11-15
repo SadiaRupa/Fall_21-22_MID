@@ -1,37 +1,31 @@
 <?php
-class db{
- 
-function OpenCon()
- {
- $dbhost = "localhost";
- $dbuser = "root";
- $dbpass = "";
- $db = "wt_project";
- $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
- 
- return $conn;
- }
- function CheckUser($conn,$table,$username,$password)
- {
- $result = $conn->query("SELECT * FROM $table WHERE username='$username' AND password='$password'");
- return $result;
- }
+	$db_server="localhost";
+	$db_uname="root";
+	$db_pass="";
+	$db_name="wt_project";
+	
+	function execute($query){ 
+		global $db_server,$db_uname,$db_pass,$db_name;
+		$conn = mysqli_connect($db_server,$db_uname,$db_pass,$db_name);
+		if($conn){
+			if(mysqli_query($conn,$query)){
+				return true;
+			}
+			return mysqli_error($conn);
+		}
+	}
+	function get($query){ 
+		global $db_server,$db_uname,$db_pass,$db_name;
+		$conn = mysqli_connect($db_server,$db_uname,$db_pass,$db_name);
+		$data = array();
+		if($conn){
+			$result = mysqli_query($conn,$query);
+			while($row = mysqli_fetch_assoc($result)){
+				$data[] = $row;
+			}
+			
+		}
+		return $data;
+	}
 
- function InsertUser($conn,$table,$name,$username,$email,$password)
- {
-$result = $conn->query("INSERT INTO $table (name, username, email, password) VALUES ('$name','$username', '$email', 'password')");
-return $result;
- }
-
- function ShowAll($conn,$table)
- {
-$result = $conn->query("SELECT * FROM  $table");
- return $result;
- }
-
-function CloseCon($conn)
- {
- $conn -> close();
- }
-}
 ?>
