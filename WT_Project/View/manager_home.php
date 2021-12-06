@@ -12,7 +12,7 @@
       <td>
         <div align = "center">
         <a href="http://localhost/Webtech/WT_Project/View/add_hotel_room.php"> Add Hotel Rooms <br></a>
-        </div>
+      </div>
       </td>
 	   <td>
         <div align = "center">
@@ -38,7 +38,7 @@
 	  <div align = "center">
         <a href="http://localhost/Webtech/WT_Project/View/add_emp.php"> Add Employees <br></a>
         </div>
-      </td>     
+      </td> <br>    
         <td>
             <div align="center"><p><a href="logout.php" >LOG OUT <br></a></div>
         </td>

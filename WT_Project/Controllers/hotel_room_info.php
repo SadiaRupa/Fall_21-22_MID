@@ -81,6 +81,59 @@ if(isset($_POST["Insert"]))
           }
      }
 
+/**********************************************Update******************************* */
+
+if(isset($_POST["Edit"]))
+     {
+          if(empty($_POST["name"]))
+          {
+               $err_name="Name Required";
+               $hasError = true;
+          }
+
+          else
+          {
+               $name=$_POST["name"];
+          }
+
+          if(empty($_POST["roomno"]))
+          {
+               $err_roomno="Room No Required";
+               $hasError = true;
+          }
+
+          else
+          {
+               $roomno=$_POST["roomno"];
+          }
+
+          if(empty($_POST["descr"]))
+          {
+               $err_descr="Description Required";
+               $hasError = true;
+          }
+
+          else
+          {  
+               $descr=$_POST["descr"];
+          }
+
+         ///   $categories=$_POST["category"];
+
+          //Database
+
+          if(!$hasError)
+          {
+               $rs=updateHotel("$name","$roomno","$descr","$categories");
+               if($rs===true)
+               {
+                    header("Location: manager_home.php");
+               }
+
+               $err_db= "Duplicate Data";
+          }
+     }
+
      function all_hotel_rooms()
      {
      	$query= "SELECT * from hotel_room";
@@ -98,4 +151,11 @@ if(isset($_POST["Insert"]))
           $query="INSERT INTO hotel_room VALUES('$name','$roomno','$descr','$categories')";
           return execute($query);
      }
+
+     function updateHotel($name,$roomno,$descr,$categories)
+     {
+          $query = "UPDATE hotel_room set name='$name', roomno='$roomno', description='$descr',Category='$categories)'";
+          return execute($query);
+     }
+
 ?>
